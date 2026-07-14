@@ -78,8 +78,48 @@ The evidence/ folder contains captured terminal output for:
 | attack_nonexistent_user.log | Backend correctly rejects a username not present in the credential store, and still drops privileges unconditionally regardless of authentication outcome |
 ## Task 2: User Space Malware Analysis Sandbox
 
-(To be added.)
+### Overview
 
+A user-space sandbox controller (sandbox.c) that runs an untrusted
+binary under supervision, using OS-level process control and
+concurrency rather than signature-based detection.
+
+- The parent process fork()s a child, and the child execve()s the
+  target binary directly. The child takes no part in monitoring or
+  terminating itself - all control lives in the parent.
+- Two pthreads run inside the parent: a timer thread enforcing a hard
+  wall-clock deadline, and a monitor thread that externally samples the
+  childs cumulative CPU time via /proc/pid/stat and enforces a CPU
+  time limit.
+- Both threads write to shared state (a termination flag) using atomic
+  operations, and share a mutex-protected logging function, to avoid
+  race conditions between concurrently running threads.
+- Termination is enforced with SIGKILL, which the target cannot block,
+  ignore, or resist.
+
+### How to build and run
+
+    cd task2
+    gcc -Wall -o sandbox sandbox.c -lpthread
+    gcc -Wall -o test_normal test_normal.c
+    gcc -Wall -o test_infinite test_infinite.c
+    gcc -Wall -o test_cpu_heavy test_cpu_heavy.c
+
+    ./sandbox ./test_normal        # exits cleanly, no forced termination
+    ./sandbox ./test_infinite      # force-killed at the wall-clock limit (5s)
+    ./sandbox ./test_cpu_heavy     # force-killed at the CPU time limit (3s)
+
+Each run appends a timestamped log to sandbox_run.log in the same folder.
+
+### Evidence
+
+Captured in task2/evidence/sandbox_run.log, covering three scenarios:
+
+| Scenario | What it demonstrates |
+|---|---|
+| Normal binary (test_normal) | Well-behaved process exits on its own; sandbox detects clean exit via waitpid() and does not intervene |
+| Infinite-loop binary (test_infinite) | Process ignoring its own runtime is force-terminated by SIGKILL exactly at the wall-clock limit, independent of the process cooperating |
+| CPU-heavy binary (test_cpu_heavy) | Process is force-terminated by SIGKILL when its externally measured CPU time crosses the limit, faster than the wall-clock limit alone would catch it, proving the two monitoring mechanisms work independently |
 ## Author
 
 Coventry University / Softwarica College of IT & E-Commerce
