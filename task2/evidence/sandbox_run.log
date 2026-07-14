@@ -1,0 +1,79 @@
+[sandbox] ==== new run: target = ./test_normal ====
+[sandbox] parent pid=985088
+[sandbox] child pid=985089 started
+[sandbox] timer thread started, wall-clock limit = 5 s
+[sandbox] monitor thread started, CPU limit = 3 s
+[sandbox] monitor: child cpu time so far = 0.00 s
+[sandbox] monitor: child cpu time so far = 0.00 s
+[sandbox] monitor: child cpu time so far = 0.00 s
+[sandbox] monitor: child cpu time so far = 0.00 s
+[sandbox] monitor: child cpu time so far = 0.00 s
+[sandbox] monitor: child cpu time so far = 0.00 s
+[sandbox] monitor: child cpu time so far = 0.00 s
+[sandbox] monitor: child cpu time so far = 0.00 s
+[sandbox] monitor: child cpu time so far = 0.00 s
+[sandbox] monitor: child cpu time so far = 0.00 s
+[sandbox] child exited normally, code=0
+[sandbox] ==== run complete ====
+
+[sandbox] ==== new run: target = ./test_infinite ====
+[sandbox] parent pid=985109
+[sandbox] child pid=985110 started
+[sandbox] timer thread started, wall-clock limit = 5 s
+[sandbox] monitor thread started, CPU limit = 3 s
+[sandbox] monitor: child cpu time so far = 0.00 s
+[sandbox] monitor: child cpu time so far = 0.00 s
+[sandbox] monitor: child cpu time so far = 0.00 s
+[sandbox] monitor: child cpu time so far = 0.00 s
+[sandbox] monitor: child cpu time so far = 0.00 s
+[sandbox] monitor: child cpu time so far = 0.00 s
+[sandbox] monitor: child cpu time so far = 0.00 s
+[sandbox] monitor: child cpu time so far = 0.00 s
+[sandbox] monitor: child cpu time so far = 0.00 s
+[sandbox] monitor: child cpu time so far = 0.00 s
+[sandbox] monitor: child cpu time so far = 0.00 s
+[sandbox] monitor: child cpu time so far = 0.00 s
+[sandbox] monitor: child cpu time so far = 0.00 s
+[sandbox] monitor: child cpu time so far = 0.00 s
+[sandbox] monitor: child cpu time so far = 0.00 s
+[sandbox] monitor: child cpu time so far = 0.00 s
+[sandbox] monitor: child cpu time so far = 0.00 s
+[sandbox] monitor: child cpu time so far = 0.00 s
+[sandbox] monitor: child cpu time so far = 0.00 s
+[sandbox] monitor: child cpu time so far = 0.00 s
+[sandbox] monitor: child cpu time so far = 0.00 s
+[sandbox] monitor: child cpu time so far = 0.00 s
+[sandbox] monitor: child cpu time so far = 0.00 s
+[sandbox] monitor: child cpu time so far = 0.00 s
+[sandbox] TIME LIMIT EXCEEDED (5 s elapsed) - requesting termination
+[sandbox] monitor: child cpu time so far = 0.00 s
+[sandbox] enforcing termination: sending SIGKILL to pid=985110
+[sandbox] confirmed: child terminated by signal 9 (Killed)
+[sandbox] ==== run complete ====
+
+[sandbox] ==== new run: target = ./test_cpu_heavy ====
+[sandbox] parent pid=985154
+[sandbox] child pid=985155 started
+[sandbox] timer thread started, wall-clock limit = 5 s
+[sandbox] monitor thread started, CPU limit = 3 s
+[sandbox] monitor: child cpu time so far = 0.00 s
+[sandbox] monitor: child cpu time so far = 0.20 s
+[sandbox] monitor: child cpu time so far = 0.39 s
+[sandbox] monitor: child cpu time so far = 0.59 s
+[sandbox] monitor: child cpu time so far = 0.80 s
+[sandbox] monitor: child cpu time so far = 1.00 s
+[sandbox] monitor: child cpu time so far = 1.20 s
+[sandbox] monitor: child cpu time so far = 1.40 s
+[sandbox] monitor: child cpu time so far = 1.60 s
+[sandbox] monitor: child cpu time so far = 1.80 s
+[sandbox] monitor: child cpu time so far = 2.00 s
+[sandbox] monitor: child cpu time so far = 2.20 s
+[sandbox] monitor: child cpu time so far = 2.40 s
+[sandbox] monitor: child cpu time so far = 2.60 s
+[sandbox] monitor: child cpu time so far = 2.80 s
+[sandbox] monitor: child cpu time so far = 3.00 s
+[sandbox] CPU LIMIT EXCEEDED (3.00 s) - requesting termination
+[sandbox] enforcing termination: sending SIGKILL to pid=985155
+[sandbox] confirmed: child terminated by signal 9 (Killed)
+[sandbox] ==== run complete ====
+

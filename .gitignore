@@ -1,5 +1,9 @@
 task1/backend
 task1/frontend
+task2/sandbox
+task2/test_normal
+task2/test_infinite
+task2/test_cpu_heavy
 *.o
 *.out
 *.b64
