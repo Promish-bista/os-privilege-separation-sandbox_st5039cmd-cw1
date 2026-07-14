@@ -1,0 +1,5 @@
+task1/backend
+task1/frontend
+*.o
+*.out
+*.b64

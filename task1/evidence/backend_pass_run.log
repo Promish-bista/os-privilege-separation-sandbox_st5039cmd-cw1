@@ -1,0 +1,9 @@
+[backend] started. real uid=0 effective uid=0
+[backend] runtime check: effective UID = 0
+[backend] listening on /tmp/authsvc.sock
+[backend] frontend connected
+[backend] validating login for user 'alice'
+[backend] privileges dropped. real=997 eff=997
+[backend] confirmed: attempt to reclaim root failed as expected (Operation not permitted)
+[backend] result sent: PASS
+[backend] sensitive buffers wiped, exiting. final uid=997 euid=997

@@ -1,0 +1,10 @@
+$ ps aux | grep backend
+root      918078  0.3  0.1  20048  7808 pts/0    S+   07:08   0:00 sudo ./backend
+root      918080  0.0  0.0  20048  2496 pts/3    Ss   07:08   0:00 sudo ./backend
+authsvc   918081  0.0  0.0   2800  1948 pts/3    S+   07:08   0:00 ./backend
+
+$ cat /proc/918081/status | grep -E "^(Name|Uid|Gid)"
+Name:   backend
+Uid:    997     997     997     997
+Gid:    987     987     987     987
+

@@ -1,0 +1,15 @@
+Test: connect to backend socket and close immediately with zero bytes sent.
+
+Backend log:
+[backend] started. real uid=0 effective uid=0
+[backend] runtime check: effective UID = 0
+[backend] listening on /tmp/authsvc.sock
+[backend] frontend connected
+[backend] recv: Success
+
+Note: recv() returned 0 (clean EOF, not a true error), but errno was stale
+at that point since recv() only sets errno on an actual failure (-1). The
+program's n <= 0 check still correctly treats this as "no valid data" and
+exits safely without crashing or hanging - but the message text itself is
+misleading. This is a minor observation worth discussing re: error handling
+correctness in the report

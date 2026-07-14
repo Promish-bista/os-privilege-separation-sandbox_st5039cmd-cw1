@@ -1,0 +1,9 @@
+$ python3 -c "..."  (sent raw bytes b'garbageinputnocolon' with no colon separator over the socket)
+Backend response: b'FAIL'
+
+Backend log:
+[backend] started. real uid=0 effective uid=0
+[backend] runtime check: effective UID = 0
+[backend] listening on /tmp/authsvc.sock
+[backend] frontend connected
+[backend] malformed request

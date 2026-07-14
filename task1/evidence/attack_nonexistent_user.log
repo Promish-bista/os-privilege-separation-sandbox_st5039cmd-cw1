@@ -1,0 +1,21 @@
+Test: attempt login with username "root", which does not exist in our
+fake shadow file (/etc/myshadow.txt only contains an entry for "alice").
+
+Client sent: b'root:anything'
+Client received: b'FAIL'
+
+Backend log:
+[backend] started. real uid=0 effective uid=0
+[backend] runtime check: effective UID = 0
+[backend] listening on /tmp/authsvc.sock
+[backend] frontend connected
+[backend] validating login for user 'root'
+[backend] privileges dropped. real=997 eff=997
+[backend] confirmed: attempt to reclaim root failed as expected (Operation not permitted)
+[backend] result sent: FAIL
+[backend] sensitive buffers wiped, exiting. final uid=997 euid=997
+
+Note: privilege drop occurs unconditionally, regardless of whether
+authentication succeeded or failed - this is correct: the backend must
+always relinquish elevated privilege before it does anything else, not
+only on the success path.
